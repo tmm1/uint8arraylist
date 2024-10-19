@@ -123,6 +123,7 @@
     "clean": "aegir clean",
     "lint": "aegir lint",
     "dep-check": "aegir dep-check",
+    "prepare": "aegir build",
     "build": "aegir build",
     "test": "aegir test",
     "test:chrome": "aegir test -t browser --cov",
