@@ -60,10 +60,10 @@ const list = new Uint8ArrayList()
 list.append(Uint8Array.from([0, 1, 2]))
 list.append(Uint8Array.from([3, 4, 5]))
 
-list.slice(0, 1)
+list.subarray(0, 1)
 // -> Uint8Array([0]) - no-copy
 
-list.slice(2, 5)
+list.subarray(2, 5)
 // -> Uint8Array([2, 3, 4]) - copy
 ```
 
