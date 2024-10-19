@@ -13,6 +13,7 @@
     "url": "https://github.com/achingbrain/uint8arraylist/issues"
   },
   "type": "module",
+  "main": "./dist/src/index.js",
   "types": "./dist/src/index.d.ts",
   "files": [
     "src",
@@ -23,7 +24,8 @@
   "exports": {
     ".": {
       "types": "./dist/src/index.d.ts",
-      "import": "./dist/src/index.js"
+      "import": "./dist/src/index.js",
+      "require": "./dist/cjs/src/index.js"
     }
   },
   "eslintConfig": {
@@ -122,7 +124,8 @@
     "clean": "aegir clean",
     "lint": "aegir lint",
     "dep-check": "aegir dep-check",
-    "build": "aegir build",
+    "build": "aegir build && npm run build:cjs",
+    "build:cjs": "tsc --project tsconfig.json --module commonjs --verbatimModuleSyntax false --moduleResolution node10 --outDir ./dist/cjs --declaration --declarationDir ./dist/cjs && echo >./dist/cjs/package.json '{\"type\":\"commonjs\"}'",
     "test": "aegir test",
     "test:chrome": "aegir test -t browser --cov",
     "test:chrome-webworker": "aegir test -t webworker",
@@ -140,6 +143,7 @@
     "aegir": "^41.1.9",
     "benchmark": "^2.1.4",
     "bl": "^6.0.0",
-    "it-all": "^3.0.4"
+    "it-all": "^3.0.4",
+    "typescript": "^5.6.3"
   }
 }
